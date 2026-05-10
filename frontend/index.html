@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IntelliHire AI</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h1>🤖 IntelliHire AI</h1>
+    <p>AI Powered Resume & Interview Evaluation System</p>
+
+    <!-- Upload -->
+    <div class="card">
+        <h2>📄 Upload Resume</h2>
+        <input type="file" id="resume">
+        <button onclick="uploadResume()">Upload</button>
+    </div>
+
+    <!-- Job Description -->
+    <div class="card">
+        <h2>💼 Job Description</h2>
+        <textarea id="jd" placeholder="Paste job description..."></textarea>
+        <button onclick="getMatch()">Get Match Score</button>
+        <button onclick="getATS()">Check ATS Score</button>
+    </div>
+
+    <!-- Interview -->
+    <div class="card">
+        <h2>🎤 Interview Answer</h2>
+        <textarea id="answer" placeholder="Type your answer..."></textarea>
+        <button onclick="evaluateAnswer()">Evaluate</button>
+    </div>
+
+    <!-- Result -->
+    <div class="result-card">
+        <h2 id="output">Result will appear here</h2>
+
+        <canvas id="scoreChart"></canvas>
+
+        <div class="progress-bar">
+            <div id="progress"></div>
+        </div>
+
+        <button onclick="downloadReport()">Download Report</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
