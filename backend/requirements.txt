@@ -4,3 +4,6 @@ sentence-transformers
 scikit-learn
 python-multipart
 pdfplumber
+torch
+transformers
+gradio
