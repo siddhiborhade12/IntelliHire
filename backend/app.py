@@ -19,19 +19,24 @@ app.add_middleware(
 )
 
 # ---------------- FRONTEND ----------------
-frontend_path = os.path.join(
-    os.path.dirname(__file__),
-    "../frontend"
-)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-app.mount("/static", StaticFiles(directory=frontend_path), name="static")
+frontend_path = os.path.join(
+    BASE_DIR,
+    "..",
+    "frontend"
+)
 
 @app.get("/")
 def serve_frontend():
-    return FileResponse(
-        os.path.join(frontend_path, "index.html")
-    )
+    file_path = os.path.join(frontend_path, "index.html")
 
+    if os.path.exists(file_path):
+        return FileResponse(file_path)
+
+    return {
+        "error": "Frontend file not found"
+    }
 # ---------------- LOAD MODEL ----------------
 model = SentenceTransformer('paraphrase-MiniLM-L3-v2')
 
